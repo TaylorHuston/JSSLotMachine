@@ -88,8 +88,24 @@ const spin = () => {
     return reels;
 }
 
-const reels = spin();
+const transpose = (reels) => {
+    const rows = [];
+    for (let i = 0; i < ROWS; i++) {
+        rows.push([]);
+        for (let j = 0; j < COLS; j++) {
+            rows[i].push(reels[j][i]);
+        }
+    }
+
+    return rows;
+}
+
+
 //console.log(reels);
 let balance = deposit();
 const numLines = getNumberOfLines();
 const bet = getBet(balance, numLines);
+const reels = spin();
+const rows = transpose(reels);
+console.log(reels);
+console.log(rows);
