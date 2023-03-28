@@ -19,8 +19,8 @@ const SYMBOLS_COUNT = {
 const SYMBOL_VALUES = {
     "A": 5,
     "B": 4,
-    "c": 3,
-    "d": 2,
+    "C": 3,
+    "D": 2,
 }
 
 const deposit = () => {
@@ -139,6 +139,7 @@ const game = () => {
     let balance = deposit();
 
     while(true){
+
         const numLines = getNumberOfLines();
         const bet = getBet(balance, numLines);
         balance -= bet * numLines;
@@ -149,7 +150,18 @@ const game = () => {
         console.log(`You won $${winnings}`);
         //console.log(reels);
         //console.log(rows);
-        bakance += winnings;
+        balance += winnings;
+        console.log(`Your balance is $${balance}`);
+
+        if (balance <= 0) {
+            console.log('You are out of money!');
+            break;
+        }
+
+        const playAgain = prompt('Would you like to play again? (y/n) ');
+        if (playAgain !== 'y') {
+            break;
+        }
     }
 }
 
